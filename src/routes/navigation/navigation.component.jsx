@@ -1,8 +1,17 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
 import "./navigation.styles.scss";
+import { UserContext } from "../../contexts/user.context";
+import { logOut } from "../../utils/firebase/firebase-utils";
 const Navigation = () => {
+  const { currentUser } = useContext(UserContext);
+
+  const signOutHandler = async () => {
+    await logOut();
+    // We no longer need to setCurrentUser to null given it's taken care of by onAuthStateChanged
+    // setCurrentUser(null);
+  };
   return (
     <Fragment>
       <div className="navigation">
@@ -13,9 +22,16 @@ const Navigation = () => {
           <Link className="nav-link" to="/shop">
             SHOP
           </Link>
-          <Link className="nav-link" to="/auth">
-            SIGN IN
-          </Link>
+
+          {currentUser ? (
+            <span className="nav-link" onClick={signOutHandler}>
+              SIGN OUT
+            </span>
+          ) : (
+            <Link className="nav-link" to="/auth">
+              SIGN IN
+            </Link>
+          )}
         </div>
       </div>
       <Outlet />
