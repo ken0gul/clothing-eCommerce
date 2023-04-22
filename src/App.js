@@ -5,10 +5,7 @@ import "./components/categories/categories.styles.scss";
 import Home from "./routes/home/Home.component";
 import Navigation from "./routes/navigation/navigation.component";
 import SignIn from "./routes/authentication/authentication.component";
-
-const Shop = () => {
-  return <h1>I am the shop page</h1>;
-};
+import Shop from "./routes/shop/shop.component";
 
 const App = () => {
   return (

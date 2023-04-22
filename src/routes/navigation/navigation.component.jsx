@@ -4,9 +4,12 @@ import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
 import "./navigation.styles.scss";
 import { UserContext } from "../../contexts/user.context";
 import { logOut } from "../../utils/firebase/firebase-utils";
+import CartIcon from "../../components/cart-icon/cart-icon.component";
+import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
+import { CartContext } from "../../contexts/cart.context";
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-
+  const { isOpen } = useContext(CartContext);
   const signOutHandler = async () => {
     await logOut();
     // We no longer need to setCurrentUser to null given it's taken care of by onAuthStateChanged
@@ -32,7 +35,11 @@ const Navigation = () => {
               SIGN IN
             </Link>
           )}
+
+          <CartIcon />
         </div>
+        {/* short curcuiting */}
+        {isOpen && <CartDropdown />}
       </div>
       <Outlet />
     </Fragment>
