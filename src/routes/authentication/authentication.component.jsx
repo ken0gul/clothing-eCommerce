@@ -2,7 +2,8 @@ import React from "react";
 
 import SignUpForm from "../../components/sign-up/sign-up-form.component";
 import SignInForm from "../../components/sign-in-form/sign-in-form.component";
-import "./authentication.styles.scss";
+import { AuthhenticationContainer } from "./authentication.styles";
+
 const SignIn = () => {
   // useEffect(() => {
   //   async function getResults() {
@@ -16,7 +17,7 @@ const SignIn = () => {
   // }, []);
 
   return (
-    <div className="authentication-container">
+    <AuthhenticationContainer className="authentication-container">
       <SignInForm />
 
       <SignUpForm />
@@ -24,7 +25,7 @@ const SignIn = () => {
       {/* <button onClick={signInWithGoogleRedirect}>
         Sign in with Google Redirect
       </button> */}
-    </div>
+    </AuthhenticationContainer>
   );
 };
 

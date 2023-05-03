@@ -5,12 +5,11 @@ import {
   createUserDocumentFromAuth,
   db,
 } from "../../utils/firebase/firebase-utils";
-import { doc, getDoc, setDoc } from "firebase/firestore";
 import FormInput from "../form-input/form-input.component";
 
-import "./sign-up-form.styles.scss";
-import Button from "../button/button.component";
+import Button, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { UserContext } from "../../contexts/user.context";
+import { Heading, SignUpContainer } from "./sign-up-form.styles";
 
 const defaultFormFields = {
   displayName: "",
@@ -54,8 +53,8 @@ const SignUpForm = () => {
     setFormFields(defaultFormFields);
   };
   return (
-    <div className="sign-up-container">
-      <h2>Don't have an account?</h2>
+    <SignUpContainer>
+      <Heading>Don't have an account?</Heading>
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
@@ -92,11 +91,11 @@ const SignUpForm = () => {
           onChange={handleChange}
         />
 
-        <Button type="submit" buttonType={"google"}>
+        <Button type="submit" buttonType={BUTTON_TYPES_CLASSES.base}>
           Sign Up
         </Button>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 
