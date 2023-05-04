@@ -13,7 +13,8 @@ import {
 
 const CartDropdown = () => {
   let navigate = useNavigate();
-  const { cartItems } = useContext(CartContext);
+  const { isOpen, cartItems } = useContext(CartContext);
+  console.log(cartItems);
   return (
     <CartDropDownContainer>
       <CartItemsContainer>

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 import {
   CartIconContainer,
@@ -8,7 +8,7 @@ import {
 
 const CartIcon = () => {
   const { isOpen, setIsOpen } = useContext(CartContext);
-  const { cartItems, cartCount } = useContext(CartContext);
+  const { cartCount } = useContext(CartContext);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
